@@ -3,7 +3,7 @@ import Step from "../models/steps.model.js";
 export const getAllSteps = async (req, res) => {
   try {
     const step = await Step.find({});
-    return res.status(200).json({ message: "Success: ", step });
+    return res.status(200).json({ message: "Success", step });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -19,7 +19,7 @@ export const getStep = async (req, res) => {
     if (!step) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", step });
+    return res.status(200).json({ message: "Success", step });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -56,7 +56,7 @@ export const editStep = async (req, res) => {
     if (!step) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", step });
+    return res.status(200).json({ message: "Success", step });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -72,7 +72,7 @@ export const deleteStep = async (req, res) => {
     if (!step) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(204).json({ message: "Success: ", step });
+    return res.status(204).json({ message: "Success", step });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res

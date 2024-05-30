@@ -13,10 +13,6 @@ const setSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    floors: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: "Floor",
-    },
     mils: {
         type: String,
         required: true

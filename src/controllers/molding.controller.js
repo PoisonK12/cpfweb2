@@ -3,7 +3,7 @@ import Molding from "../models/molding.model.js";
 export const getAllMoldings = async (req, res) => {
   try {
     const moldings = await Molding.find({});
-    return res.status(200).json({ message: "Success: ", moldings });
+    return res.status(200).json({ message: "Success", moldings });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -19,7 +19,7 @@ export const getMolding = async (req, res) => {
     if (!molding) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", molding });
+    return res.status(200).json({ message: "Success", molding });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -47,7 +47,7 @@ export const editMolding = async (req, res) => {
     if (!molding) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", molding });
+    return res.status(200).json({ message: "Success", molding });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -83,7 +83,7 @@ export const createNewMolding = async (req, res) => {
       features,
     });
     await molding.save();
-    return res.status(201).json({ message: "Success: ", molding });
+    return res.status(201).json({ message: "Success", molding });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res

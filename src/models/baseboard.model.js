@@ -12,8 +12,8 @@ const baseboardSchema = new mongoose.Schema({
   },
   material: {
     type: String,
-    enum: [],
-    default: "",
+    enum: ["Laminate", "Vinyl"],
+    default: "Vinyl",
   },
   measurements: {
     type: Number,

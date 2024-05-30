@@ -3,7 +3,7 @@ import Set from "../models/set.model.js";
 export const getAllsets = async (req, res) => {
     try {
         const sets = await Set.find({})
-        return res.status(200).json({ message: "Success: ", sets })
+        return res.status(200).json({ message: "Success", sets })
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })
@@ -17,7 +17,7 @@ export const getset = async (req, res) => {
         if (!set) {
             return res.status(404).json({ message: "Producto no encontrado" })
         }
-        return res.status(200).json({ message: "Success: ", set })
+        return res.status(200).json({ message: "Success", set })
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })

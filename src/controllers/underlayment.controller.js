@@ -3,7 +3,7 @@ import Underlayment from "../models/underlayment.model.js";
 export const getAllUnderlayments = async (req, res) => {
   try {
     const underlayment = await Underlayment.find({});
-    return res.status(200).json({ message: "Success: ", underlayment });
+    return res.status(200).json({ message: "Success", underlayment });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -19,7 +19,7 @@ export const getUnderlayment = async (req, res) => {
     if (!underlayment) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", underlayment });
+    return res.status(200).json({ message: "Success", underlayment });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res

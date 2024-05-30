@@ -3,7 +3,7 @@ import Baseboard from "../models/baseboard.model.js";
 export const getAllBaseboards = async (req, res) => {
   try {
     const baseboards = await Baseboard.find({});
-    return res.status(200).json({ message: "Success: ", baseboards });
+    return res.status(200).json({ message: "Success", baseboards });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -19,7 +19,7 @@ export const getBaseboard = async (req, res) => {
     if (!baseboard) {
       return res.status(404).json({ message: "Producto no Encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", baseboard });
+    return res.status(200).json({ message: "Success", baseboard });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -49,7 +49,7 @@ export const editBaseboard = async (req, res) => {
     if (!baseboard) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(200).json({ message: "Success: ", baseboard });
+    return res.status(200).json({ message: "Success", baseboard });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -65,7 +65,7 @@ export const deleteBaseboard = async (req, res) => {
     if (!baseboard) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    return res.status(204).json({ message: "Success: ", baseboard });
+    return res.status(204).json({ message: "Success", baseboard });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
@@ -88,7 +88,7 @@ export const createNewBaseboard = async (req, res) => {
     })
 
     await baseboard.save()
-    return res.status(201).json({ message: "Success: ", baseboard })
+    return res.status(201).json({ message: "Success", baseboard })
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
