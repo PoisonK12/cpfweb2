@@ -19,4 +19,14 @@ server.use(morgan("dev"));
 server.use(express.json());
 server.use(compression(compOptions))
 
+//Rutas
+
+server.use("/user", userRoutes)
+server.use("/baseboard", baseboardRoutes)
+server.use("/step", stepRoutes)
+server.use("/underlayment", underlaymentRoutes)
+server.use("/floor", floorRoutes)
+server.use("/set", setRoutes)
+server.use("/molding", moldingRoutes)
+
 export default server;
