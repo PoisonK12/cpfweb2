@@ -5,7 +5,7 @@ const floorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  collection: {
+  set: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Set",
   },

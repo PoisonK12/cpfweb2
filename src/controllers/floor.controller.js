@@ -10,10 +10,10 @@ export const getAllFloors = async (req, res) => {
     }
 }
 
-export const getAllFloorsFromCollection = async (req, res) => {
+export const getAllFloorsFromset = async (req, res) => {
     try {
         const { setId } = req.params
-        const floors = await Floor.find({ collection: setId })
+        const floors = await Floor.find({ set: setId })
         return res.status(200).json({ message: "Success: ", floors })
     } catch (error) {
         console.error({ message: "Error: ", error });
@@ -26,7 +26,7 @@ export const getFloorById = async (req, res) => {
         const { id } = req.params
         const floor = await Floor.findById(id)
         if (!floor) {
-            return res.status(404).json({ message: "Collection not found" });
+            return res.status(404).json({ message: "set not found" });
         }
         return res.status(200).json({ message: "Success: ", floor })
     } catch (error) {
@@ -38,10 +38,10 @@ export const getFloorById = async (req, res) => {
 export const editFloor = async (req, res) => {
     try {
         const {id} = req.params
-        const {colorName, collection, material, installationMethod, wearLayer, overallThickness} = req.body
+        const {colorName, set, material, installationMethod, wearLayer, overallThickness} = req.body
         const updatedFloor = {
             ...(colorName && {colorName}),
-            ...(collection && {collection}),
+            ...(set && {set}),
             ...(material && {material}),
             ...(installationMethod && {installationMethod}),
             ...(wearLayer && {wearLayer}),
@@ -60,7 +60,7 @@ export const deleteFloor = async (req, res) => {
         const {id} = req.params
         const floor = await Floor.findByIdAndDelete(id)
         if (!floor) {
-            return res.status(404).json({ message: "Collection not found" });
+            return res.status(404).json({ message: "set not found" });
         }
         return res.status(200).json({ message: "Success: ", floor })
     } catch (error) {
@@ -71,10 +71,10 @@ export const deleteFloor = async (req, res) => {
 
 export const createNewFloor = async (req, res) => {
     try {
-        const {colorName, collection, material, installationMethod, wearLayer, overallThickness} = req.body
+        const {colorName, set, material, installationMethod, wearLayer, overallThickness} = req.body
         const floor = new Floor({
             colorName,
-            collection,
+            set,
             material,
             installationMethod,
             wearLayer,

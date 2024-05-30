@@ -1,37 +1,37 @@
 import Set from "../models/set.model.js";
 
-export const getAllCollections = async (req, res) => {
+export const getAllsets = async (req, res) => {
     try {
-        const collections = await Set.find({})
-        return res.status(200).json({ message: "Success: ", collections })
+        const sets = await Set.find({})
+        return res.status(200).json({ message: "Success: ", sets })
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })
     }
 }
 
-export const getCollection = async (req, res) => {
+export const getset = async (req, res) => {
     try {
         const { id } = req.params
-        const collection = await Set.findOne(id)
-        if (!collection) {
+        const set = await Set.findOne(id)
+        if (!set) {
             return res.status(404).json({ message: "Producto no encontrado" })
         }
-        return res.status(200).json({ message: "Success: ", collection })
+        return res.status(200).json({ message: "Success: ", set })
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })
     }
 }
 
-export const editCollection = async (req, res) => {
+export const editset = async (req, res) => {
     try {
         const { id } = req.params;
-        const { materialType, collectionName, brand, floors, mils, plankSize, thickness, padding, planksPerBox, sqftPerBox, installationMethod, warranty, setClass, features } = req.body;
+        const { materialType, setName, brand, floors, mils, plankSize, thickness, padding, planksPerBox, sqftPerBox, installationMethod, warranty, setClass, features } = req.body;
 
-        const updatedCollection = {
+        const updatedset = {
             ...(materialType && { materialType }),
-            ...(collectionName && { collectionName }),
+            ...(setName && { setName }),
             ...(brand && { brand }),
             ...(floors && { floors }),
             ...(mils && { mils }),
@@ -46,13 +46,13 @@ export const editCollection = async (req, res) => {
             ...(features && { features }),
         };
 
-        const collection = await Set.findByIdAndUpdate(id, updatedCollection, { new: true });
+        const set = await Set.findByIdAndUpdate(id, updatedset, { new: true });
 
-        if (!collection) {
-            return res.status(404).json({ message: "Collection not found" });
+        if (!set) {
+            return res.status(404).json({ message: "set not found" });
         }
 
-        return res.status(200).json({ message: "Collection updated successfully", collection });
+        return res.status(200).json({ message: "set updated successfully", set });
     } catch (error) {
         console.error("Error: ", error);
         return res.status(500).json({ message: "An error occurred", error: error.message });
@@ -60,26 +60,26 @@ export const editCollection = async (req, res) => {
 };
 
 
-export const deleteCollection = async (req, res) => {
+export const deleteset = async (req, res) => {
     try {
         const { id } = req.params
-        const collection = await Set.findByIdAndDelete(id)
-        if (!collection) {
-            return res.status(404).json({ message: "Collection not found" });
+        const set = await Set.findByIdAndDelete(id)
+        if (!set) {
+            return res.status(404).json({ message: "set not found" });
         }
-        return res.status(204).json({ message: "Collection deleted successfully", collection });
+        return res.status(204).json({ message: "set deleted successfully", set });
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })
     }
 }
 
-export const createNewCollection = async (req, res) => {
+export const createNewset = async (req, res) => {
     try {
-        const { materialType, collectionName, brand, floors, mils, plankSize, thickness, padding, planksPerBox, sqftPerBox, installationMethod, warranty, setClass, features } = req.body;
-        const collection = new Set({
+        const { materialType, setName, brand, floors, mils, plankSize, thickness, padding, planksPerBox, sqftPerBox, installationMethod, warranty, setClass, features } = req.body;
+        const set = new Set({
             materialType,
-            collectionName,
+            setName,
             brand,
             floors,
             mils,
@@ -93,8 +93,8 @@ export const createNewCollection = async (req, res) => {
             setClass,
             features
         })
-        await collection.save()
-        return res.status(201).json({ message: "Collection created successfully", collection });
+        await set.save()
+        return res.status(201).json({ message: "set created successfully", set });
     } catch (error) {
         console.error({ message: "Error: ", error });
         return res.status(500).json({ message: "An error ocurred", error: error.message })

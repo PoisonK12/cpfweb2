@@ -5,7 +5,7 @@ const setSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    collectionName: {
+    setName: {
         type: String,
         unique: true
     },

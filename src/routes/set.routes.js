@@ -1,12 +1,12 @@
 import { Router } from "express"
-import { createNewCollection, deleteCollection, editCollection, getAllCollections, getCollection } from "../controllers/set.controller.js"
+import { createNewset, deleteset, editset, getAllsets, getset } from "../controllers/set.controller.js"
 
 const router = Router()
 
-router.get("/", getAllCollections)
-router.get("/:id", getCollection)
-router.post("/new", createNewCollection)
-router.put("/:id", editCollection)
-router.delete("/:id", deleteCollection)
+router.get("/", getAllsets)
+router.get("/:id", getset)
+router.post("/new", createNewset)
+router.put("/:id", editset)
+router.delete("/:id", deleteset)
 
 export default router;
