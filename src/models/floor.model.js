@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const floorSchema = new mongoose.Schema({
-  color: {
+  colorName: {
     type: String,
     required: true,
   },

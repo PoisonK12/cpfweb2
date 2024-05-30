@@ -60,16 +60,35 @@ export const editBaseboard = async (req, res) => {
 
 export const deleteBaseboard = async (req, res) => {
   try {
+    const { id } = req.params;
+    const baseboard = await Baseboard.findByIdAndDelete(id);
+    if (!baseboard) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+    return res.status(204).json({ message: "Success: ", baseboard });
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
       .status(500)
-      .json({ message: "An error ocurred", error: error.message });
+      .json({ message: "An error occurred", error: error.message });
   }
 };
 
+
 export const createNewBaseboard = async (req, res) => {
   try {
+    const { brand, style, material, measurements, pcsPerPallet, features } = req.body
+    const baseboard = new Baseboard({
+      brand,
+      style,
+      material,
+      measurements,
+      pcsPerPallet,
+      features
+    })
+
+    await baseboard.save()
+    return res.status(201).json({ message: "Success: ", baseboard })
   } catch (error) {
     console.error({ message: "Error: ", error });
     return res
