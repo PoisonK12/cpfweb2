@@ -1,6 +1,6 @@
 import Molding from "../models/molding.model.js";
 
-export const getMoldings = async (req, res) => {
+export const getAllMoldings = async (req, res) => {
   try {
     const moldings = await Molding.find({});
     return res.status(200).json({ message: "Success: ", moldings });
