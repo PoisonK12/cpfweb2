@@ -1,4 +1,4 @@
-import Floor from "../models/floor.model";
+import Floor from "../models/floor.model.js";
 
 export const getAllFloors = async (req, res) => {
     try {
