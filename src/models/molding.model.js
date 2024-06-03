@@ -4,7 +4,11 @@ const moldingSchema = new mongoose.Schema({
   profile: {
     type: String,
     enum: ["Reducer", "End Cap", "T-Molding", "Stair Noise Overlap"],
-    default: "Reducer"
+    default: "Reducer",
+  },
+  img: {
+    type: [String],
+    required: true,
   },
   brand: {
     type: String,

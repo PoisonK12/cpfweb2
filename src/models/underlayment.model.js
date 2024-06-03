@@ -6,6 +6,10 @@ const underlaymentSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    img: {
+        type: [String],
+        required: true
+    },
     material: {
         type: String,
         enum: ["EVA", "EPE"],

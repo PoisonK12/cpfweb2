@@ -6,6 +6,10 @@ const stepsSchema = new mongoose.Schema({
     enum: ["Square", "Double Rounded", "L-Shade"],
     default: "Square"
   },
+  img: {
+    type: [String],
+    required: true
+},
   brand: {
     type: String,
     required: true,

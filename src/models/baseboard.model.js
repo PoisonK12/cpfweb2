@@ -5,6 +5,10 @@ const baseboardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: [String],
+    required: true,
+  },
   style: {
     type: String,
     enum: ["Contemporaneo", "Clasico"],
@@ -21,7 +25,7 @@ const baseboardSchema = new mongoose.Schema({
   },
   pcsPerPallet: {
     type: Number,
-    required: true
+    required: true,
   },
   features: {
     type: [String],

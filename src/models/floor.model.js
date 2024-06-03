@@ -5,6 +5,10 @@ const floorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: [String],
+    required: true,
+  },
   set: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Set",
@@ -12,20 +16,20 @@ const floorSchema = new mongoose.Schema({
   material: {
     type: String,
     enum: ["Laminate", "Vinyl"],
-    default: "Vinyl"
+    default: "Vinyl",
   },
   installationMethod: {
     type: String,
-    required: true
+    required: true,
   },
   wearLayer: {
     type: String,
-    required: true
+    required: true,
   },
   overallThickness: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 export default mongoose.model("Floor", floorSchema);

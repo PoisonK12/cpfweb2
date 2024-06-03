@@ -9,6 +9,10 @@ const setSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
+    img: {
+        type: [String],
+        required: true
+    },
     brand: {
         type: String,
         required: true
